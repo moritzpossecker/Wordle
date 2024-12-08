@@ -1,11 +1,26 @@
-output: main.o functions.o
-	g++ main.o functions.o -o output
+#Compiler
+CXX = g++
 
-main.o: main.cpp
-	g++ -c main.cpp
+#Compiler flags
+CXXFLAGS = -Iinclude -Wall -Wextra
 
-functions.o:
-	g++ -c functions.cpp
+#Source files and object files
+SRC = src/*.cpp
+OBJ = $(SRC:.cpp=.o)
 
+#Executable name
+TARGET = output
+
+#Default target
+all: $(TARGET)
+
+#Link the object files to create the executable
+$(TARGET): $(OBJ)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+#Clean up generated files
 clean:
-	rm -rf *.o output
+	rm -f $(OBJ) $(TARGET)
+
+#Phony targets
+.PHONY: all clean
