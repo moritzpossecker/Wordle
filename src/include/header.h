@@ -1,0 +1,23 @@
+#ifdef HEADER
+#define HEADER
+
+#include <iostream>
+#include <vector>
+#include <cctype>
+
+class Letter
+{
+	public:
+		char character;
+		bool isyellow;
+		bool isgreen;
+
+	public:
+		void Create_Letter(char letter, bool IsYellow, bool IsGreen);
+
+		void Print_Letter(Letter input_letter);
+};
+
+std::vector<Letter> Wordle_Line(std::string input_word, std::string goal_word);
+
+#endif

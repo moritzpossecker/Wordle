@@ -1,40 +1,63 @@
 #include <iostream>
 #include <vector>
-#include "functions.h"
-#include "classes.h"
+#include "include/header.h"
 
-std::vector<Letter> Wordle_Line(std::string input_word, std::string goal_word);
+class Letter
 {
-	std::vector<Letter> return_vector(5);
+	public:
+		char character;
+		bool isyellow;
+		bool isgreen;
 
-	for (int i = 0; i < goal_word.size(); i++)
-	{
-		for (int j = 0; j < goal_word.size; j++) 
-		{
-			if (input_word[i] == goal_word[j] && goal_word[i] != input_word[j])
-			{
-				return_vector[i] = Letter temp_letter.Create_Letter(input_word[i], true, false);
-			}
-		}
+	public:
+		void Create_Letter(char letter, bool IsYellow, bool IsGreen);
 
-		if (input_word[i] == goal_word[i])
-		{
-			return_vector[i] = Letter temp_letter.Create_Letter(input_word[i], false, true);
-		}
-	}
-}
+		void Print_Letter(Letter input_letter);
+};
 
-void Letters::Create_Letter(char Letter, bool IsYellow, bool IsGreen)
+void Letter::Create_Letter(char Letter, bool IsYellow, bool IsGreen)
 {
 	character = Letter;
 	isyellow = IsYellow;
 	isgreen = IsGreen;
 }	
 
-void Letters::Print_Letter(Letter input_letter)
+void Letter::Print_Letter(Letter input_letter)
 {
 	std::cout << "[" << input_letter.character;
 	if (input_letter.isyellow) {std::cout << "*";}
 	else if (input_letter.isgreen) {std::cout << "!";}
 	std::cout << "]";
 }
+
+//function that returns a vector of letters that are marked with yellow, green, or neither
+std::vector<Letter> Wordle_Line(std::string input_word, std::string goal_word)
+{
+	std::vector<Letter> return_vector(5);
+
+	for (int i = 0; i < goal_word.size(); i++)
+	{
+		return_vector[i].character = input_word[i];
+	}	
+
+	for (int i = 0; i < goal_word.size(); i++)
+	{	
+		for (int j = 0; j < goal_word.size(); j++) 
+		{
+			if (input_word[i] == goal_word[j] && goal_word[i] != input_word[j])
+			{
+				return_vector[i].isyellow = true;
+				return_vector[i].isgreen = false;
+			}
+		}
+
+		if (input_word[i] == goal_word[i])
+		{
+			return_vector[i].isyellow = false;
+			return_vector[i].isgreen = true;
+		}
+	}
+
+	return return_vector;
+}
+
