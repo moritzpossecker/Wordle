@@ -1,6 +1,9 @@
 #include <iostream>
+#include <fstream>
 #include <vector>
 #include <cctype>
+#include <stdlib.h>
+#include <time.h>
 #include "include/header.h"
 
 class Letter
@@ -19,15 +22,43 @@ class Letter
 std::vector<Letter> Wordle_Line(std::string input_word, std::string goal_word);
 
 int main()
-{	
-	std::vector<std::vector<Letter>> wordle_lines(5, std::vector<Letter>(5));
-
+{
 	std::string goal_word = "queer";
+
+	//importing the wordle words and randomly selecting one
+	std::ifstream wordleWords ("valid-wordle-words.txt");
+	int nol = 0;
+	std::string line;
+	std::vector<std::string> randomWordleWords;
+	if (wordleWords.is_open())
+	{
+		while(wordleWords >> line)
+		{
+			randomWordleWords.push_back(line);
+		}
+		
+		srand(time(NULL));
+		goal_word = randomWordleWords[rand() % randomWordleWords.size()];
+		wordleWords.close();
+	}
+	else std::cout << "Unable to open file";
+
+
+
+	std::vector<std::vector<Letter>> wordle_lines(5, std::vector<Letter>(5));
+	
+	std::cout << "Command Line Wordle" << std::endl;
+	std::cout << "Created by: Tini" << std::endl;
+	std::cout << "\n";
+	std::cout << "Try and guess the correct word. You have 5 guesses" << std::endl;
+	std::cout << "'*' near the letter means that letter appears one or more times in the word" << std::endl;
+	std::cout << "'!' near the letter means that letter is in the correct location" << std::endl;
+	std::cout << "--------------------------------------------------" << std::endl;
+
 	int turns = 0;
 	bool iswin = false;
 	while (turns <= 4  && iswin == false)
 	{
-		std::cout << turns << std::endl;
 		std::string input_line;
 		std::cout << "Please input a guess: " << std::endl;
 	
@@ -64,6 +95,8 @@ int main()
 			std::cout << "\n";
 		}
 		
+		std::cout << "--------------------------------------------------" << std::endl;
+
 		//win/lose condition check
 		//iterates the turns counter
 		if (input_line == goal_word)
@@ -72,7 +105,7 @@ int main()
 			std::cout << "~~Congratulations, you won!~~" << std::endl;
 			std::cout << "The word was: " << goal_word << std::endl;
 			if (turns < 1) { std::cout << "You guessed it in " << turns + 1 << " try!"; }
-			else { std::cout << "You guessed it in " << turns + 1 << " tries!"; }
+			else { std::cout << "You guessed it in " << turns + 1 << " tries!" << std::endl; }
 		}
 
 		else { turns += 1; }
