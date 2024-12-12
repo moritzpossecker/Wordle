@@ -2,8 +2,11 @@
 #define HEADER
 
 #include <iostream>
+#include <fstream>
 #include <vector>
 #include <cctype>
+#include <stdlib.h>
+#include <time.h>
 
 class Letter
 {

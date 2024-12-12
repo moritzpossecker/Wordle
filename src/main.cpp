@@ -43,8 +43,6 @@ int main()
 	}
 	else std::cout << "Unable to open file";
 
-
-
 	std::vector<std::vector<Letter>> wordle_lines(5, std::vector<Letter>(5));
 	
 	std::cout << "Command Line Wordle" << std::endl;
