@@ -1,4 +1,4 @@
-#ifdef HEADER
+#ifndef HEADER
 #define HEADER
 
 #include <iostream>
