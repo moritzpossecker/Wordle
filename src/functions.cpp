@@ -24,10 +24,23 @@ void Letter::Create_Letter(char Letter, bool IsYellow, bool IsGreen)
 
 void Letter::Print_Letter(Letter input_letter)
 {
-	std::cout << "[" << input_letter.character;
-	if (input_letter.isyellow) {std::cout << "*";}
-	else if (input_letter.isgreen) {std::cout << "!";}
-	std::cout << "]";
+    // ANSI escape codes for colors
+    const std::string YELLOW = "\033[33m";
+    const std::string GREEN = "\033[32m";
+    const std::string DEFAULT = "\033[0m";
+
+    std::cout << "[";
+    
+    // Apply color based on letter properties
+    if (input_letter.isyellow) {
+        std::cout << YELLOW << input_letter.character << DEFAULT;
+    } else if (input_letter.isgreen) {
+        std::cout << GREEN << input_letter.character << DEFAULT;
+    } else {
+        std::cout << input_letter.character;
+    }
+
+    std::cout << "]";
 }
 
 //function that returns a vector of letters that are marked with yellow, green, or neither
