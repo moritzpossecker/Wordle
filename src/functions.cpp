@@ -24,11 +24,6 @@ void Letter::Create_Letter(char Letter, bool IsYellow, bool IsGreen)
 
 void Letter::Print_Letter(Letter input_letter)
 {
-    // ANSI escape codes for colors
-    const std::string YELLOW = "\033[33m";
-    const std::string GREEN = "\033[32m";
-    const std::string DEFAULT = "\033[0m";
-
     std::cout << "[";
     
     // Apply color based on letter properties

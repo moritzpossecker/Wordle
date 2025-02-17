@@ -8,6 +8,11 @@
 #include <stdlib.h>
 #include <time.h>
 
+// ANSI color codes
+const std::string YELLOW = "\033[33m";
+const std::string GREEN = "\033[32m";
+const std::string DEFAULT = "\033[0m";
+
 class Letter
 {
 	public:

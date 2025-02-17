@@ -43,10 +43,6 @@ int main()
 	}
 	else std::cout << "Unable to open file";
 
-	const std::string YELLOW = "\033[33m";
-    const std::string GREEN = "\033[32m";
-    const std::string DEFAULT = "\033[0m";
-
 	std::vector<std::vector<Letter>> wordle_lines(5, std::vector<Letter>(5));
 	
 	std::cout << "Command Line Wordle" << std::endl;
