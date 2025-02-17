@@ -53,8 +53,8 @@ int main()
 	std::cout << "Created by: Tini" << std::endl;
 	std::cout << "\n";
 	std::cout << "Try and guess the correct word. You have 5 guesses" << std::endl;
-	std::cout << "a" << YELLOW << "yellow" << DEFAULT << "letter means that it appears one or more times in the word" << std::endl;
-	std::cout << "a" << GREEN << "green" << DEFAULT << "letter means that it is in the correct location" << std::endl;
+	std::cout << "a" << YELLOW << " yellow " << DEFAULT << "letter means that it appears one or more times in the word" << std::endl;
+	std::cout << "a" << GREEN << " green " << DEFAULT << "letter means that it is in the correct location" << std::endl;
 	std::cout << "--------------------------------------------------" << std::endl;
 
 	int turns = 0;
