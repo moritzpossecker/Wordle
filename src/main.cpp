@@ -43,14 +43,18 @@ int main()
 	}
 	else std::cout << "Unable to open file";
 
+	const std::string YELLOW = "\033[33m";
+    const std::string GREEN = "\033[32m";
+    const std::string DEFAULT = "\033[0m";
+
 	std::vector<std::vector<Letter>> wordle_lines(5, std::vector<Letter>(5));
 	
 	std::cout << "Command Line Wordle" << std::endl;
 	std::cout << "Created by: Tini" << std::endl;
 	std::cout << "\n";
 	std::cout << "Try and guess the correct word. You have 5 guesses" << std::endl;
-	std::cout << "'*' near the letter means that letter appears one or more times in the word" << std::endl;
-	std::cout << "'!' near the letter means that letter is in the correct location" << std::endl;
+	std::cout << "a" << YELLOW << "yellow" << DEFAULT << "letter means that it appears one or more times in the word" << std::endl;
+	std::cout << "a" << GREEN << "green" << DEFAULT << "letter means that it is in the correct location" << std::endl;
 	std::cout << "--------------------------------------------------" << std::endl;
 
 	int turns = 0;
